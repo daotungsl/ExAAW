@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style type="text/css">
+        .ui-datalist {
+            width:300px;
+            margin-bottom: 20px;
+        }
+
+        .ui-datalist-item {
+            padding:3px;
+        }
+
+        .paginated .ui-datalist-data {
+            padding-left: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        //<![CDATA[
+        function dateTemplateFunc(date) {
+            return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+        }
+        //]]>
+    </script>
+
+    <style type="text/css">
+        .value {
+            font-weight: bold;
+        }
+    </style>
+</h:head>
+
+
+<h1>Trang xin nghỉ phép</h1>
+<h3>Name: </h3>
+<h:form id="form">
+    <p:growl id="msgs" showDetail="true" />
+
+    <h:panelGrid columns="2" cellpadding="5">
+
+
+        <p:outputLabel for="to-time" value="Từ:" />
+        <p:datePicker id="to-time" value="#{leaveView.toDate}" showTime="true"/>
+
+        <p:outputLabel for="from-time" value="Đến:" />
+        <p:datePicker id="from-time" value="#{leaveView.fromDate}" showTime="true"/>
+
+        <p:outputLabel for="lydo" value="Lý do:" />
+        <p:inputTextarea id="lydo" rows="6" cols="33" />
+    </h:panelGrid>
+
+    <p:commandButton value="Submit" update="msgs" action="#{leaveView.click}" icon="pi pi-check" />
+
+    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+        <p:panelGrid id="display" columns="4" columnClasses="label,value,label,value">
+
+
+            <h:outputText value="To:" />
+            <h:outputText value="#{leaveView.toDate}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+
+            <h:outputText value="From:" />
+            <h:outputText value="#{leaveView.fromDate}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+
+
+        </p:panelGrid>
+    </p:dialog>
+</h:form>
+</html>

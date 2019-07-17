@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style type="text/css">
+        .ui-datalist {
+            width:300px;
+            margin-bottom: 20px;
+        }
+
+        .ui-datalist-item {
+            padding:3px;
+        }
+
+        .paginated .ui-datalist-data {
+            padding-left: 20px;
+        }
+    </style>
+</h:head>
+
+
+
+<h:form id="form">
+    <div class="ui-dataview-row">
+
+        <p:dataList value="#{homeView.workSchedule}" var="user" type="ordered">
+            <f:facet name="header">
+                Work Schedule
+            </f:facet>
+            #{user.id}, #{user.name}
+        </p:dataList>
+
+        <p:dataList value="#{homeView.particular}" var="user" type="definition">
+            <f:facet name="header">
+                Praticular
+            </f:facet>
+            Brand: #{user.id}, Year: #{user.name}
+
+        </p:dataList>
+
+        <p:commandButton value="Leave" action="#{loginView.doSubmit}">
+        </p:commandButton>
+    </div>
+
+</h:form>
+</html>
