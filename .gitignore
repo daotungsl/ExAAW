@@ -26,7 +26,5 @@ hs_err_pid*
 
 .gitignore
 .idea/
-ExAAW.iml
-pom.xml
-src/
-web/
+
+
